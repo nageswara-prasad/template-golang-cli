@@ -2,7 +2,6 @@ tasks:
   - init: |
       go get github.com/spf13/cobra/cobra
       go build
-      - name: Static Server
   - name: Dowload jenkins key
     command: curl -fsSL https://pkg.jenkins.io/debian-stable/jenkins.io.key | sudo tee \
       /usr/share/keyrings/jenkins-keyring.asc > /dev/null

@@ -1,20 +1,11 @@
 tasks:
   - init: |
-      go get github.com/spf13/cobra/cobra
-      go build
-  - name: Dowload jenkins key
-    command: curl -fsSL https://pkg.jenkins.io/debian-stable/jenkins.io.key | sudo tee \
-      /usr/share/keyrings/jenkins-keyring.asc > /dev/null
-  - name: echo jenkins list
-    command: echo deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] \
-      https://pkg.jenkins.io/debian-stable binary/ | sudo tee \
-      /etc/apt/sources.list.d/jenkins.list > /dev/null
-  - name: update packges
-    command: udo apt-get update
-  - name: install jenkins
-    command: sudo apt-get install jenkins
-  - name: start jenkins
-    command: jenkins
+      curl -fsSL https://pkg.jenkins.io/debian-stable/jenkins.io.key | sudo tee /usr/share/keyrings/jenkins-keyring.asc > /dev/null
+      echo deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] https://pkg.jenkins.io/debian-stable binary/ | sudo tee /etc/apt/sources.list.d/jenkins.list > /dev/null
+      sudo apt-get update
+      sudo apt-get install jenkins
+    command: |
+      jenkins
 vscode:
   extensions:
     - golang.go

@@ -1,4 +1,4 @@
-image: jenkins:latest
+image: jenkins:2.60.3
 vscode:
   extensions:
     - golang.go
